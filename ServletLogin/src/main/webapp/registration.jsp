@@ -100,7 +100,7 @@ button{
   border-radius: 10px;
   padding: 5px 10px 10px 5px;
   background-color: rgba(255,255,255,0.27);
-  color: #000000;
+  color: #eaf0fb;
   text-align: center;
   margin-left:300px
 } 
@@ -114,31 +114,26 @@ button{
   margin-right: 4px;
 }
 
-.fa-user-plus{
-  color: black;
-}
-
 </style>
 <body>
  <div align="right" class="wrapper">
     <div align="left" class="content">
-    	<form action="login" method="post"> 
+    	<form action="<%=request.getContextPath()%>/RegistrationServlet" method="post"> 
     	
-    	    <h3>Note-it-down</h3>  
+    	    <h3>User Registration</h3>  
     	    <br>
+    	    
+    	    <label for="username">First Name:  </label> 
+       		<input type="text" placeholder="Enter firstname here" name="firstname">
     	    
     	    <label for="username">Username:  </label> 
        		<input type="text" placeholder="Enter Username here" name="username">
        		    	    
     	    <label for="password">Password:  </label>
         	<input type="password" placeholder="Enter Password here" name="password">
-        	${errorMsg}
-			<button>Log In</button>
+			<button>Register</button>
 			
 			
-			<div onclick="window.location.href='registration.jsp'" class="social">
-          		<div class="go"><i class="fas fa-user-plus"></i>New User?</div>
-        	</div>
 
  		</form>
  	</div>

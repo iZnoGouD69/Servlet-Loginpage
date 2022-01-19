@@ -1,8 +1,6 @@
-package com.example.login;
+package com.example.registration;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class WelcomeServlet
+ * Servlet implementation class RegistrationServlet
  */
-@WebServlet("/WelcomeServlet")
-public class WelcomeServlet extends HttpServlet {
+@WebServlet("/RegistrationServlet")
+public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private UserDao userDao = new UserDao();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WelcomeServlet() {
+    public RegistrationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +29,7 @@ public class WelcomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("Welcome " + request.getAttribute("user"));
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,10 +38,24 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("Welcome " + request.getAttribute("user"));
+		String username = request.getParameter("username");
+		String passwrod = request.getParameter("password");
+		String firstname = request.getParameter("firstname");
 		
+		UserRegistration userRegistration = new UserRegistration();
+		userRegistration.setFirstname(firstname);
+		userRegistration.setUsername(username);
+		userRegistration.setPassword(passwrod);
+		
+		
+		try {
+			userDao.registerUser(userRegistration);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("");
 	}
 
 }
