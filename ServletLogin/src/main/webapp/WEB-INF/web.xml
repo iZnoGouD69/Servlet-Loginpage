@@ -12,6 +12,7 @@
         <url-pattern>/login</url-pattern>
 </servlet-mapping>
 
+
 <servlet>
         <servlet-name>Welcome</servlet-name>
         <servlet-class>com.example.login.WelcomeServlet</servlet-class>
@@ -20,6 +21,31 @@
 <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
         <url-pattern>/welcome</url-pattern>
-    </servlet-mapping>
+</servlet-mapping>
+
+
+<servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>com.example.login.LogoutController</servlet-class>
+</servlet> 
+
+<servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+</servlet-mapping>
+
+
+<!-- <servlet>
+        <servlet-name>LoginFilter</servlet-name>
+        <servlet-class>com.example.login.LoginFilter</servlet-class>
+</servlet> 
+
+<servlet-mapping>
+        <servlet-name>LoginFilter</servlet-name>
+        <url-pattern>/index.jsp</url-pattern>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/list</url-pattern>
+</servlet-mapping>  -->
+
 
 </web-app>

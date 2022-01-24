@@ -20,7 +20,7 @@ rel="stylesheet">
 }
 
 html{
-  background: url("sticky_notes_background.jpg");
+  background-color : lightblue; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -41,8 +41,7 @@ body{
   border-radius: 10px;
   padding: 40px 30px;
   margin-top: 100px;
-  background-color: #47a88d;
-  margin-left: 800px;
+  background-color: #00000008;
   box-shadow: -3px -3px 30px #000000,
               3px 3px 30px rgb(0, 0, 0);
  
@@ -81,7 +80,7 @@ input{
 button{
     margin-top: 50px;
     width: 100%;
-    background-color: #a3d4c5;
+    background-color: #ffffff;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -118,7 +117,7 @@ button{
 <body>
  <div align="right" class="wrapper">
     <div align="left" class="content">
-    	<form action="<%=request.getContextPath()%>/RegistrationServlet" method="post"> 
+    	<form action="<%=request.getContextPath()%>/registration" method="post"> 
     	
     	    <h3>User Registration</h3>  
     	    <br>
@@ -131,6 +130,9 @@ button{
        		    	    
     	    <label for="password">Password:  </label>
         	<input type="password" placeholder="Enter Password here" name="password">
+        	
+        	${errorMsgPassword}
+        	
 			<button>Register</button>
 			
 			

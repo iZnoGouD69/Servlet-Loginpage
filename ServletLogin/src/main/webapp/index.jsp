@@ -20,13 +20,14 @@ rel="stylesheet">
 }
 
 html{
-  background: url("sticky_notes_background.jpg");
+  background-image: url("blackhole.jpg");
+  background-color : lightblue; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 800px;
- 
  }
+
 
 body{
   display: grid;
@@ -41,8 +42,7 @@ body{
   border-radius: 10px;
   padding: 40px 30px;
   margin-top: 100px;
-  background-color: #47a88d;
-  margin-left: 800px;
+  background-color: #00000008;
   box-shadow: -3px -3px 30px #000000,
               3px 3px 30px rgb(0, 0, 0);
  
@@ -79,9 +79,9 @@ input{
 }
 
 button{
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
-    background-color: #a3d4c5;
+    background-color: #ffffff;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -91,7 +91,7 @@ button{
 }
 
 .social{
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
 }
 .social div{
@@ -132,12 +132,11 @@ button{
        		    	    
     	    <label for="password">Password:  </label>
         	<input type="password" placeholder="Enter Password here" name="password">
-        	${errorMsg}
 			<button>Log In</button>
+			${errorMsg}
 			
-			
-			<div onclick="window.location.href='registration.jsp'" class="social">
-          		<div class="go"><i class="fas fa-user-plus"></i>New User?</div>
+			<div  class="social">
+          		<div onclick="window.location.href='registration.jsp'" class="go"><i class="fas fa-user-plus"></i>New User?</div>
         	</div>
 
  		</form>

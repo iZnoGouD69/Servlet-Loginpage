@@ -6,23 +6,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDao {
+import javax.servlet.http.HttpServletRequest;
+
+public class LoginDao extends DatabaseConnection {
 	
-	public static boolean validate(String username, String password) throws ClassNotFoundException {
+	public static boolean validate(String username, String password, HttpServletRequest request) throws ClassNotFoundException {
 		boolean status = false;
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		try {
-			Connection connection = DriverManager.getConnection
-					("jdbc:mysql://localhost:3306/notesusers?useSSL=false","root","Z3r0_c00l!");
+			Connection connection = DriverManager.getConnection(url + dbName,dbUsername,dbPassword);
 			
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from "
-					+ "users where username=? and password=?");
+			PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
 			preparedStatement.setString(1,username);
 			preparedStatement.setString(2,password);
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			status = resultSet.next();
+			
+			String firstname = resultSet.getString("firstname");
+			request.getSession().setAttribute("user", firstname);
+			System.out.println(firstname);
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
