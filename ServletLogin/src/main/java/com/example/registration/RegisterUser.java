@@ -1,6 +1,6 @@
 package com.example.registration;
 
-public class UserRegistration {
+public class RegisterUser {
 	
 	private String firstname;
 	private String username;

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NotesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
-    private NotesDao notesDao;
+    private Notes notesDao;
     
     public void init() {
     	notesDao = new NotesDaoImplementation();
@@ -45,7 +45,7 @@ public class NotesController extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch(action) {
-			case "/new":
+			case "/addnote":
 				showNewForm(request,response);
 				break;
 				
@@ -53,9 +53,12 @@ public class NotesController extends HttpServlet {
 	            insertTodo(request, response);
 	            break;
 	            
-			case "/list":
+			case "/home":
                 listTodo(request, response);
                 break;
+                
+			case "/delete":
+				deleteTodo(request,response);
 				
 			default:
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -68,7 +71,8 @@ public class NotesController extends HttpServlet {
 		
 	}
 	
-	private void listTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	private void listTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		// TODO Auto-generated method stub
 		String username = request.getSession().getAttribute("user").toString();
 		List<NotesModel> listNotes = notesDao.selectAllNotes(username);
@@ -86,10 +90,11 @@ public class NotesController extends HttpServlet {
 	     /*DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-mm-dd");
 	     LocalDate targetDate = LocalDate.parse(request.getParameter("targetDate"),df);*/
 
-	     boolean isDone = Boolean.valueOf(request.getParameter("isDone"));
+	    // boolean isDone = Boolean.valueOf(request.getParameter("isDone"));
+	     String isDone = request.getParameter("isDone"); 
 	     NotesModel notesModel = new NotesModel(title, username, description, LocalDate.now(), isDone);
 	     notesDao.insertNote(notesModel);
-	     response.sendRedirect("list");
+	     response.sendRedirect("home");
 		
 	}	
 
@@ -105,6 +110,15 @@ public class NotesController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void deleteTodo(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
+		notesDao.deleteNote(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+		dispatcher.forward(request, response);
+		//response.sendRedirect("home");
 	}
 
 }

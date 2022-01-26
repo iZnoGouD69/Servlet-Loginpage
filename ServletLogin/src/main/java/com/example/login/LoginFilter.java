@@ -17,9 +17,8 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class LoginFilter
  */
 @WebFilter(urlPatterns = {
-        "/list",
-        "/login",
-        "/new"
+        "/addnote",
+        "/home",
     })
 public class LoginFilter implements Filter {
 

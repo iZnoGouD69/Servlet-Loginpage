@@ -18,11 +18,11 @@
   <nav class="navbar navbar-expand-md navbar-dark"
    style="background-color: black">
    <div>
-    <a href="<%=request.getContextPath()%>/list" class="navbar-brand">Note-it-down</a>
+    <a href="<%=request.getContextPath()%>/home" class="navbar-brand">Note-it-down</a>
    </div>
 
    <ul class="navbar-nav">
-    <li><a href="<%=request.getContextPath()%>/list"
+    <li><a href="<%=request.getContextPath()%>/home"
      class="nav-link">Notes list</a></li>
    </ul>
 
@@ -72,8 +72,8 @@
     <fieldset class="form-group">
      <label>Note's Status</label> <select class="form-control"
       name="isDone">
-      <option value="false">In Progress</option>
-      <option value="true">Complete</option>
+      <option value="Progress">Progress</option>
+      <option value="Complete">Complete</option>
      </select>
     </fieldset>
 

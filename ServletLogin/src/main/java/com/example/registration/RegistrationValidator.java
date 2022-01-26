@@ -3,12 +3,6 @@ package com.example.registration;
 
 public class RegistrationValidator {
 	
-	public static void main(String[] args) {
-		System.out.println(containsLower("abc"));
-		System.out.println(containsUpper("ABC"));
-		System.out.println(containsDigit("123"));
-	} 
-	
 	public static String validate(String password, String message) {
 		
 		if(!containsLower(password)) {

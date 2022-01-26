@@ -21,7 +21,7 @@
    </div>
 
    <ul class="navbar-nav">
-    <li><a href="<%=request.getContextPath()%>/list"
+    <li><a href="<%=request.getContextPath()%>/home"
      class="nav-link">Notes list</a></li>
    </ul>
 
@@ -39,8 +39,8 @@
    <h3 class="text-center">List of Notes</h3>
    <hr>
    <div class="container text-left">
-	<h5> Welcome <%=session.getAttribute("user") %> </h5> <br> 
-    <a href="<%=request.getContextPath()%>/new"
+	<h5> Welcome <%=session.getAttribute("name") %> </h5> <br> 
+    <a href="<%=request.getContextPath()%>/addnote"
      class="btn btn-success">Add Note</a>
    </div>
    <br>
@@ -49,7 +49,8 @@
      <tr>
       <th>Title</th>
       <th>Target Date</th>
-      <th>Todo Status</th>
+      <th>Note's Description
+      <th>Note Status</th>
       <th>Actions</th>
      </tr>
     </thead>
@@ -60,9 +61,10 @@
       <tr>
        <td><c:out value="${todo.title}" /></td>
        <td><c:out value="${todo.targetDate}" /></td>
+       <td><c:out value="${todo.description}"/></td>
        <td><c:out value="${todo.status}" /></td>
 
-       <td><a href="edit?id=<c:out value='${todo.id}' />">Edit</a>
+       <td>
         &nbsp;&nbsp;&nbsp;&nbsp; <a
         href="delete?id=<c:out value='${todo.id}' />">Delete</a></td>
 

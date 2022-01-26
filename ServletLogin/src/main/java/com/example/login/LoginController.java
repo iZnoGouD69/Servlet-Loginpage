@@ -2,6 +2,7 @@ package com.example.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static String err = "Sorry username or password didn't match";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,16 +49,14 @@ public class LoginController extends HttpServlet {
 		System.out.println(password);
 		
 		try {
-			if(LoginDao.validate(username, password, request)) {
-				RequestDispatcher reqdis = request.getRequestDispatcher("/list");
-				reqdis.forward(request, response);
+			if(LoginValidator.validate(username, password, request)) {
+				response.sendRedirect("home");
 			} else {
-				String err = "Sorry username or password didn't match";
 				request.setAttribute("errorMsg", err);
 				RequestDispatcher reqDis = request.getRequestDispatcher("index.jsp");
 				reqDis.include(request, response);
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

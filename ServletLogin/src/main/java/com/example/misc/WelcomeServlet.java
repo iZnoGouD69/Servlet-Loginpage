@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.misc;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -9,7 +9,7 @@ public class NotesModel {
 	private String username;
 	private String description;
 	private LocalDate targetDate;
-	private boolean status;
+	private String status;
 	
 	
 	public long getId() {
@@ -52,12 +52,12 @@ public class NotesModel {
 		this.targetDate = targetDate;
 	}
 
-	public boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public String setStatus(String status) {
+		return this.status = status;
 	}
 
 	
@@ -66,7 +66,7 @@ public class NotesModel {
 		
 	}
 	
-	 public NotesModel(long id, String title, String username, String description, LocalDate targetDate, boolean isDone) {
+	 public NotesModel(long id, String title, String username, String description, LocalDate targetDate, String isDone) {
 	        super();
 	        this.id = id;
 	        this.title = title;
@@ -76,7 +76,7 @@ public class NotesModel {
 	        this.status = isDone;
 	    }
 	 
-	 public NotesModel(String title, String username, String description, LocalDate targetDate, boolean isDone) {
+	 public NotesModel(String title, String username, String description, LocalDate targetDate, String isDone) {
 	        super();
 	        this.title = title;
 	        this.username = username;
