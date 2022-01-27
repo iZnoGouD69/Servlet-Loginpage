@@ -51,13 +51,12 @@ public class LoginController extends HttpServlet {
 		try {
 			if(LoginValidator.validate(username, password, request)) {
 				response.sendRedirect("home");
-			} else {
-				request.setAttribute("errorMsg", err);
-				RequestDispatcher reqDis = request.getRequestDispatcher("index.jsp");
-				reqDis.include(request, response);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
+			request.setAttribute("errorMsg", err);
+			RequestDispatcher reqDis = request.getRequestDispatcher("index.jsp");
+			reqDis.include(request, response);
 			e.printStackTrace();
 		}
 		

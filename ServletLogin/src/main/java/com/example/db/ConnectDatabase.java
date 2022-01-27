@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,17 +12,17 @@ public class ConnectDatabase {
 	public static final String dbUsername = "root";
 	public static final String dbPassword = "Z3r0_c00l!";
 	
-    public static final String DELETE_TODO_BY_ID = "delete from todos where id = ?;";
+    public static final String DELETE_NOTE_BY_ID = "delete from notes where id = ?;";
 
 	public static final String loginQuery = "select * from users where username=? and password=?";
 	
-	public static final String INSERT_TODOS_SQL ="INSERT INTO todos"
+	public static final String INSERT_NOTE_SQL ="INSERT INTO notes"
 			+ "(title, username, description, target_date, is_done) values "
 			+ "(?,?,?,?,?);";
 
 	//public static final String SELECT_ALL_TODOS = "select * from todos";
 
-	public static final String SELECT_BY_USER = "select * from todos where username = ?";
+	public static final String SELECT_BY_USER = "select * from notes where username = ?";
 	
 	public static final String INSERT_USERS_SQL = "INSERT INTO users (firstname,username,password) VALUES " +
 			" (?,?,?);";

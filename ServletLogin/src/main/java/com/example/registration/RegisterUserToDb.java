@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
-import com.example.login.ConnectDatabase;
+import com.example.db.ConnectDatabase;
 
 public class RegisterUserToDb {
 	

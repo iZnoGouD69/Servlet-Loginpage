@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.login.ConnectDatabase;
+import com.example.db.ConnectDatabase;
 
 public class NotesDaoImplementation implements Notes  {
 	
@@ -17,10 +17,10 @@ public class NotesDaoImplementation implements Notes  {
 		// TODO Auto-generated method stub
 		java.util.Date date =new java.util.Date();
 		java.sql.Date sqlDate =new java.sql.Date(date.getTime());
-		System.out.println(ConnectDatabase.INSERT_TODOS_SQL);
+		System.out.println(ConnectDatabase.INSERT_NOTE_SQL);
 		
 		PreparedStatement preparedStatement = ConnectDatabase.getConnection()
-				  .prepareStatement(ConnectDatabase.INSERT_TODOS_SQL);	
+				  .prepareStatement(ConnectDatabase.INSERT_NOTE_SQL);	
 		
 		preparedStatement.setString(1,note.getTitle());
 		preparedStatement.setString(2, note.getUsername());
@@ -58,35 +58,11 @@ public class NotesDaoImplementation implements Notes  {
 	}
 	
 	@Override
-	public NotesModel selectNote(String username1) throws SQLException {
-//		// TODO Auto-generated method stub
-		NotesModel notesModel = null;
-//		
-//		PreparedStatement preparedStatement = ConnectDatabase.getConnection()
-//												.prepareStatement(SELECT_BY_USER);
-//		
-//		preparedStatement.setString(1, username1);	
-//		ResultSet rs = preparedStatement.executeQuery();
-//			
-//		while(rs.next()) {
-//			long id = rs.getLong("id");
-//			String title = rs.getString("title");
-//			String username = rs.getString("username");
-//			String description = rs.getString("description");
-//			LocalDate targetDate = rs.getDate("target_date").toLocalDate();
-//			String isDone = rs.getString("is_done");
-//				
-//			notesModel = new NotesModel(id,title,username,description,targetDate,isDone);
-//		}
-		return notesModel;
-	}
-
-	@Override
 	public boolean deleteNote(int id) throws SQLException {
 		// TODO Auto-generated method stub
 		boolean rowDeleted;
 		PreparedStatement preparedStatement = ConnectDatabase.getConnection()
-				 							.prepareStatement(ConnectDatabase.DELETE_TODO_BY_ID);
+				 							.prepareStatement(ConnectDatabase.DELETE_NOTE_BY_ID);
 		preparedStatement.setInt(1, id);
 		rowDeleted = preparedStatement.executeUpdate() > 0;
 		

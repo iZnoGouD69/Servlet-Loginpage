@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.db.ConnectDatabase;
+
 public abstract class LoginValidator  {
 	
 	public static boolean validate(String username, String password, HttpServletRequest request) throws ClassNotFoundException, SQLException {

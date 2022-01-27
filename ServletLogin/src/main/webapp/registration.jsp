@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login Page</title>
+<title>Registration Page</title>
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com">
