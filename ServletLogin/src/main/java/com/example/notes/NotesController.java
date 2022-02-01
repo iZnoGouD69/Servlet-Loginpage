@@ -59,7 +59,11 @@ public class NotesController extends HttpServlet {
                 
 			case "/delete":
 				deleteTodo(request,response);
+				break;
 				
+			case "/editnote":
+				editNote(request,response);
+				break;
 			default:
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			    dispatcher.forward(request, response);
@@ -71,6 +75,23 @@ public class NotesController extends HttpServlet {
 		
 	}
 	
+
+	private void editNote(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		String title = request.getParameter("title");
+		String username = request.getSession().getAttribute("user").toString();
+		String description = request.getParameter("description");
+		LocalDate targetDate = LocalDate.parse(request.getParameter("targetDate"));
+		String isDone = request.getParameter("isDone"); 
+		
+		 NotesModel notesModel = new NotesModel(title, username, description, targetDate, isDone);
+		 notesDao.insertNote(notesModel);
+		 response.sendRedirect("home");
+		
+		
+	}
 
 	private void listTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		// TODO Auto-generated method stub

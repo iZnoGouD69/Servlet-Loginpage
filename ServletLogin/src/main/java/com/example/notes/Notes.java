@@ -10,5 +10,7 @@ public interface Notes  {
 	List<NotesModel> selectAllNotes(String username) throws SQLException;
 	
 	boolean deleteNote(int id) throws SQLException;
+
+	boolean editNote(NotesModel notesModel) throws SQLException; 
 	
 }

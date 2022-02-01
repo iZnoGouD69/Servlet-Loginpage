@@ -64,9 +64,9 @@
        <td><c:out value="${todo.description}"/></td>
        <td><c:out value="${todo.status}" /></td>
 
-       <td>
-        &nbsp;&nbsp;&nbsp;&nbsp; <a
-        href="delete?id=<c:out value='${todo.id}' />">Delete</a></td>
+      <td><a href="editnote?id=<c:out value='${todo.id}' />">Edit</a>
+        &nbsp;&nbsp; 
+        <a href="delete?id=<c:out value='${todo.id}' />">Delete</a></td>
 
        <!--  <td><button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button>
                  <button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td> -->

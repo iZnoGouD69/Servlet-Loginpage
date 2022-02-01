@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.db.ConnectDatabase;
-
+ 
 public class NotesDaoImplementation implements Notes  {
 	
 	
-	@Override
+	@Override 
 	public void insertNote(NotesModel note) throws SQLException {
 		// TODO Auto-generated method stub
 		java.util.Date date =new java.util.Date();
@@ -67,5 +67,25 @@ public class NotesDaoImplementation implements Notes  {
 		rowDeleted = preparedStatement.executeUpdate() > 0;
 		
 		return rowDeleted;
+	}
+
+	@Override
+	public boolean editNote(NotesModel notesModel) throws SQLException {
+		// TODO Auto-generated method stub
+		boolean rowUpdated;
+		java.util.Date date =new java.util.Date();
+		java.sql.Date sqlDate =new java.sql.Date(date.getTime());
+
+		PreparedStatement preparedStatement = ConnectDatabase.getConnection()
+											  .prepareStatement(ConnectDatabase.UPDATE_NOTE_SQL);
+		preparedStatement.setString(1, notesModel.getTitle());
+		preparedStatement.setString(2, notesModel.getUsername());
+		preparedStatement.setString(3, notesModel.getDescription());
+		preparedStatement.setDate(4, sqlDate);
+		preparedStatement.setString(5, notesModel.getStatus());
+		preparedStatement.setLong(6, notesModel.getId());
+		
+		rowUpdated = preparedStatement.execute();
+		return rowUpdated;
 	}
 }

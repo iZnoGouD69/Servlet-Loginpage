@@ -26,6 +26,9 @@ public class ConnectDatabase {
 	
 	public static final String INSERT_USERS_SQL = "INSERT INTO users (firstname,username,password) VALUES " +
 			" (?,?,?);";
+	
+	public static final String UPDATE_NOTE_SQL = "UPDATE notes set title = ?, username = ?, description = ?, "
+			+ "target_date = ?, is_done = ? where id =  ?";
 
 	
 	static Connection connection = null;
